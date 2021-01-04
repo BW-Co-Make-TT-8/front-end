@@ -102,6 +102,8 @@ export default function Login() {
                     </label>
                 </div>
                 <button disabled={initialDisabled}>Login</button>
+                <p>Don't Have an Account? Create One Now!</p>
+                {/* <button onClick={() => push('/signup')}>Sign Up</button> */}
             </div>
         </form>
     )
