@@ -43,7 +43,7 @@ export default function Profile() {
         <div className='container'>
             <nav>
                 <a>My Profile</a>
-                <a>Create Post</a>
+                <a><Link to='/post'>Create Post</Link></a>
                 <a>My Posts</a>
             </nav>
             <h1>Your Local Feed</h1>
