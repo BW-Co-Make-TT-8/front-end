@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Profile from '../User/profile';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import axiosWithAuth from '../Utils/axiosWithAuth';
 import * as yup from 'yup';
 
@@ -39,7 +39,7 @@ export default function Login() {
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token)
-                localStorage.setItem('user_id', res.data.user_id)
+                localStorage.setItem('userid', res.data.userid)
                 setFormValues(initialFormValues)
                 push('/profile')
             })
@@ -78,33 +78,36 @@ export default function Login() {
     }, [formValues])
 
     return (
-        <form className='form-container-login' onSubmit={onSubmit}>
-            <div>
-                <h1>Log In</h1>
+        <div>
+            <nav>
+                <a><Link to='/'>Home</Link></a>
+                <a><Link to='/about'>About Us</Link></a>
+                <a><Link to='/team'>Meet the Team</Link></a>
+            </nav>
+            <form className='form-container-login' onSubmit={onSubmit}>
                 <div>
-                    <label>
-                        Username
+                    <h1>Log In</h1>
+                    <div>
                         <input 
                             value={formValues.username}
                             onChange={onChange}
                             name='username'
                             type='text'
+                            placeholder='Username'
                         />
-                    </label>
-                    <label>
-                        Password
                         <input 
                             value={formValues.password}
                             onChange={onChange}
                             name='password'
-                            type='text'
+                            type='password'
+                            placeholder='Password'
                         />
-                    </label>
+                    </div>
+                    <button disabled={initialDisabled}>Login</button>
+                    <p>Don't Have an Account? Create One Now!</p>
+                    <button onClick={() => push('/signup')}>Sign Up</button>
                 </div>
-                <button disabled={initialDisabled}>Login</button>
-                <p>Don't Have an Account? Create One Now!</p>
-                {/* <button onClick={() => push('/signup')}>Sign Up</button> */}
-            </div>
-        </form>
+            </form>
+        </div>
     )
 };
