@@ -1,8 +1,6 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import Login from '../Registration/login'; // link to sign up will be in the login page
-import About from './about-us';
-import MeetTheTeam from './meet-the-team';
+import { Link } from 'react-router-dom';
+
 
 function Home () {
 
@@ -10,17 +8,10 @@ function Home () {
         <>
             <div>
                 <nav>
-                    <ul>
-                        {/* <li><Link to='/'>Home</Link></li> */}
-                        <li><Link to='/login'>Log-In</Link></li>
-                        <li><Link to='/about'>About Us</Link></li>
-                        <li><Link to='/team'>Meet the Team</Link></li>
-
-                        {/* <Route path='/' component={Home} /> */}
-                        <Route path='/login' component={Login} />
-                        <Route path='/about' component={About} />
-                        <Route path='/team' component={MeetTheTeam} />
-                    </ul>
+                    <a><Link to='/'>Home</Link></a>
+                    <a><Link to='/login'>Log-In</Link></a>
+                    <a><Link to='/about'>About Us</Link></a>
+                    <a><Link to='/team'>Meet the Team</Link></a>
                 </nav>
             </div>
             <div>
