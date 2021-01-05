@@ -88,24 +88,20 @@ export default function Login() {
                 <div>
                     <h1>Log In</h1>
                     <div>
-                        <label>
-                            Username
-                            <input 
-                                value={formValues.username}
-                                onChange={onChange}
-                                name='username'
-                                type='text'
-                            />
-                        </label>
-                        <label>
-                            Password
-                            <input 
-                                value={formValues.password}
-                                onChange={onChange}
-                                name='password'
-                                type='password'
-                            />
-                        </label>
+                        <input 
+                            value={formValues.username}
+                            onChange={onChange}
+                            name='username'
+                            type='text'
+                            placeholder='Username'
+                        />
+                        <input 
+                            value={formValues.password}
+                            onChange={onChange}
+                            name='password'
+                            type='password'
+                            placeholder='Password'
+                        />
                     </div>
                     <button disabled={initialDisabled}>Login</button>
                     <p>Don't Have an Account? Create One Now!</p>
