@@ -7,7 +7,7 @@ export default function PostDetails(props) {
 
     useEffect(() => {
         axios
-            .get(`/posts/post/${id}`)
+            .get(`http://tt-8-bw-comake.herokuapp.com/posts/post/${postId}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -22,9 +22,13 @@ export default function PostDetails(props) {
             {
                 details &&
                 <>
-                    <p></p>
+                    <div>
+                        <p>{details.city} {details.state}, {details.location}</p>
+                    </div>
+                    <p>{details.postbody}</p>
                 </>
             }
+            <button onClick={close}>Close</button>
         </div>
     )
 }

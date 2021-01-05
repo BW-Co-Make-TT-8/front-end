@@ -1,8 +1,8 @@
 // Main home page for user profile, renders the defdult local or state posts, has nav bar that includes a link to post, link to profile settings, and button to switch feed from local to state or vice versa.
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import PostDetails from './Posts/postDetails';
 
 export default function Profile() {
     const [posts, setPosts] = useState([])
@@ -41,6 +41,11 @@ export default function Profile() {
 
     return (
         <div className='container'>
+            <nav>
+                <a>My Profile</a>
+                <a>Create Post</a>
+                <a>My Posts</a>
+            </nav>
             <h1>Your Local Feed</h1>
             {
                 posts.map(pst => {

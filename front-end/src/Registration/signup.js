@@ -42,7 +42,7 @@ export default function Signup() {
     const onSubmit = evt => {
         evt.preventDefault();
         axios
-            .post('/signup', formValues)
+            .post('http://tt-8-bw-comake.herokuapp.com/signup', formValues)
             .then(res => {
                 setFormValues(initialFormValues)
                 push('/profile')

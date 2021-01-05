@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 function Home () {
 
     return (
@@ -15,11 +14,11 @@ function Home () {
                 </nav>
             </div>
             <div>
-                <h1>What we are dedicated to</h1>
+                <h1>Change Your Community with Co-Make!</h1>
                 <div>
-                    <p>Here we can fill in some description of the company, I'm not about to do this now so someone fill this in pls.</p>
+                    <p>Ever get frustrated that a problem in your town or neighborhood goes ages without being resolved? With Co-make you can make your voice heard on the issues you would like to see resolved in your community. </p>
                     <img 
-                        src='' 
+                        src="" 
                         alt='fits with the company description'
                     />
                 </div>
