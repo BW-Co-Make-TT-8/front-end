@@ -6,13 +6,13 @@ export default function About() {
     return(
         <>
             <h1>
-                About
+                About Us
             </h1>
             <h2>
                 Our Mission
             </h2>
             <p>
-                Text about our mission will go here lol
+                We are dedicated to creating a relaible, fully functioning application for you to stay connected to your community and fix the issues that mean the most to you all.
             </p>
 
             <nav>
