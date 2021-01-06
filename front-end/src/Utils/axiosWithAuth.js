@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-const axiosWithAuth = () => {
+export const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        baseURL: '',
+        baseURL: 'http://tt-8-bw-comake.herokuapp.com',
         headers: {
             authorization: token
         }
     })
 }
-
-export default axiosWithAuth;
