@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Profile from '../User/profile';
 import { Link, Route } from 'react-router-dom';
-import axiosWithAuth from '../Utils/axiosWithAuth';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
     username: yup
     .string()
-    .min(8, 'Username must be 8 or more characters long')
+    .min(5, 'Username must be 5 or more characters long')
     .required('Must include username'),
 
     password: yup

@@ -1,7 +1,7 @@
 // Main home page for user profile, renders the defdult local or state posts, has nav bar that includes a link to post, link to profile settings, and button to switch feed from local to state or vice versa.
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import PostDetails from './Posts/postDetails';
 import { Link } from 'react-router-dom';
 
@@ -11,8 +11,8 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchPosts = () => {
-            axios
-                .get('http://tt-8-bw-comake.herokuapp.com/posts')
+            axiosWithAuth()
+                .get('/posts')
                 .then(res => {
                     setPosts(res.data)
                 })
