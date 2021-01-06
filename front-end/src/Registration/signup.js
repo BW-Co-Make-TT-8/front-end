@@ -24,6 +24,7 @@ const initialFormValues = {
     username: '',
     password: '',
     email: '',
+    location: ''
 }
 
 const initialFormErrors = {
@@ -113,6 +114,13 @@ export default function Signup() {
                             name='password'
                             type='password'
                             placeholder='Password'
+                        />
+                        <input 
+                            value={formValues.location}
+                            onChange={onChange}
+                            name='location'
+                            type='number'
+                            placeholder='Zip Code'
                         />
                     </div>
                     <button disabled={intitialDisabled}>Sign Up</button>
