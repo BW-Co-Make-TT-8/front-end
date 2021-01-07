@@ -72,6 +72,8 @@ export default function Login() {
         })
     };
 
+    
+
     useEffect(() => {
         schema.isValid(formValues).then((valid) => {
             setInitialDisabled(!valid);
@@ -81,9 +83,9 @@ export default function Login() {
     return (
         <div>
             <nav>
-                <a><Link to='/'>Home</Link></a>
-                <a><Link to='/about'>About Us</Link></a>
-                <a><Link to='/team'>Meet the Team</Link></a>
+                <Link to='/'>Home</Link>
+                <Link to='/about'>About Us</Link>
+                <Link to='/team'>Meet the Team</Link>
             </nav>
             <form className='form-container-login' onSubmit={onSubmit}>
                 <div>
