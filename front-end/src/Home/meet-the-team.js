@@ -6,9 +6,9 @@ export default function MeetTheTeam() {
     return(
         <>
             <nav>
-                <a><Link to='/'>Home</Link></a>
-                <a><Link to='/login'>Log-In</Link></a>
-                <a><Link to='/about'>About Us</Link></a>
+                <Link to='/'>Home</Link>
+                <Link to='/login'>Log-In</Link>
+                <Link to='/about'>About Us</Link>
             </nav>
             <body>
                 <section className="meetTeamIntro">

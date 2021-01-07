@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function About() {
 
     return(
-        <>
+        <div>
             <h1>
                 About Us
             </h1>
@@ -16,10 +16,9 @@ export default function About() {
             </p>
 
             <nav>
-                <a><Link to='/'>Home</Link></a>
-                <a><Link to='/login'>Log-In</Link></a>
-                <a><Link to='/team'>Meet the Team</Link></a>
+                <Link to='/'>Home</Link>
+                <Link to='/login'>Log-In</Link>
+                <Link to='/team'>Meet the Team</Link>
             </nav>
-        </>
-    )
-}
+        </div>
+    )};
