@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
+import Comments from '../Comments/Comments';
+import axios from 'axios';
 
 export default function PostDetails(props) {
     const { postId, close } = props;
     const [details, setDetails] = useState(null);
 
     useEffect(() => {
+
         axiosWithAuth()
             .get(`/posts/${postId}`)
             .then(res => {
@@ -30,6 +32,7 @@ export default function PostDetails(props) {
                 </>
             }
             <button onClick={close}>Close</button>
+            <button onClick={() => <Comments postId={postId}/>}>Comments</button>
         </div>
     )
 }

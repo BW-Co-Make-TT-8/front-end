@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
+import {axiosWithAuth} from '../../Utils/axiosWithAuth'
 
 
 const schema = yup.object().shape({
@@ -23,6 +24,7 @@ const schema = yup.object().shape({
 });
 
 const initialFormValues = {
+    imgurl: '',
     title: '',
     postbody: '',
     streetaddress: '',
@@ -30,19 +32,32 @@ const initialFormValues = {
     location: '',
     city: '',
     state: '',
+    comments: []
 }
 
 export default function Post() {
     const { push } = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
+    const [user, setUser] = useState(null);
     const [initialDisabled, setInitialDisabled] = useState(true);
     const [initialFormErrors, setInitialFormErrors] = useState(initialFormValues);
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get('/userinfo')
+            .then(res => {
+                setUser(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
 
     const onSubmit = (evt) => {
         evt.preventDefault();
         console.log('post form is working', formValues);
-        axios
-            .post('/posts', formValues)
+        axiosWithAuth()
+            .post(`/users/${user.userid}/posts`, formValues)
             .then(res => {
                 console.log(res.data)
                 setFormValues(initialFormValues)
