@@ -37,14 +37,15 @@ export default function Login() {
         axiosWithAuth()
             .post('/login', formValues)
             .then(res => {
-                console.log(res.data)
-                localStorage.setItem('token', res.data.token)
-                localStorage.setItem('userid', res.data.userid)
+                console.log("this is the login", res.data)
+                localStorage.setItem('token', res.data.access_token)
+                localStorage.setItem('token_type', res.data.token_type)
                 setFormValues(initialFormValues)
                 push('/profile')
             })
             .catch(err => {
                 console.log(err);
+                debugger
             });
     };
 

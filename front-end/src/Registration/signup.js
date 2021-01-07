@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { useHistory, Link } from 'react-router-dom';
@@ -42,14 +42,17 @@ export default function Signup() {
 
     const onSubmit = evt => {
         evt.preventDefault();
-        axios
-            .post('http://tt-8-bw-comake.herokuapp.com/signup', formValues)
+        axiosWithAuth()
+            .post('/signup', formValues)
             .then(res => {
                 setFormValues(initialFormValues)
+                localStorage.setItem('token', res.data.access_token)
+                localStorage.setItem('token_type', res.data.token_type)
                 push('/profile')
             })
             .catch(err => {
                 console.log(err);
+                debugger
             })
     };
 
@@ -119,7 +122,7 @@ export default function Signup() {
                             value={formValues.location}
                             onChange={onChange}
                             name='location'
-                            type='number'
+                            // type='number'
                             placeholder='Zip Code'
                         />
                     </div>
