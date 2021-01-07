@@ -52,7 +52,7 @@ export default function Profile() {
             <h1>Your Local Feed</h1>
             {
                 posts.map(pst => {
-                    return <Post key={pst.id} info={pst} />
+                    return <Post key={pst.title} info={pst} />
                 })
             }
             {
