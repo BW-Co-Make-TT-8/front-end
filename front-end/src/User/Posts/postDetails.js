@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Comments from '../Comments/Comments';
 import axios from 'axios';
 
 export default function PostDetails(props) {
@@ -7,7 +8,7 @@ export default function PostDetails(props) {
 
     useEffect(() => {
         axios
-            .get(`http://tt-8-bw-comake.herokuapp.com/posts/post/${postId}`)
+            .get(`http://tt-8-bw-comake.herokuapp.com/posts/${postId}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -29,6 +30,7 @@ export default function PostDetails(props) {
                 </>
             }
             <button onClick={close}>Close</button>
+            <button onClick={() => <Comments postId={postId}/>}>Comments</button>
         </div>
     )
 }
