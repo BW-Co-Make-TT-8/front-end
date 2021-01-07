@@ -5,7 +5,7 @@ export const axiosWithAuth = () => {
     const token_type = localStorage.getItem('token_type')
 
     return axios.create({
-        baseURL: 'http://tt-8-bw-comake.herokuapp.com',
+        baseURL: 'https://tt-8-bw-comake.herokuapp.com',
         headers: {
             authorization: `${token_type} ${token}`
             // token_type: token_type
