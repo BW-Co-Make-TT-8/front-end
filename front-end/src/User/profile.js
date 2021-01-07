@@ -35,8 +35,8 @@ export default function Profile() {
 
     const Post = props => (
         <div className='post'>
-            {props.info.name}
-            <button onClick={() => openDetails(props.info.id)}>
+            {props.info.title}
+            <button onClick={() => openDetails(props.info.postid)}>
                 See Details
             </button>
         </div>

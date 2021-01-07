@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
+import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 
 export default function PostDetails(props) {
     const { postId, close } = props;
     const [details, setDetails] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(`http://tt-8-bw-comake.herokuapp.com/posts/post/${postId}`)
+        axiosWithAuth()
+            .get(`/posts/${postId}`)
             .then(res => {
                 setDetails(res.data)
             })
@@ -18,7 +19,7 @@ export default function PostDetails(props) {
 
     return (
         <div className='container'>
-            <h2>{details.title}</h2>
+            <h2>Details for {details.title}:</h2>
             {
                 details &&
                 <>
