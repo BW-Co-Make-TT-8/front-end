@@ -1,8 +1,8 @@
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
+import axios from 'axios'
 import { useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
 
 const schema = yup.object().shape({
     username: yup
@@ -43,13 +43,12 @@ export default function Signup() {
 
     const onSubmit = evt => {
         evt.preventDefault();
-        // axiosWithAuth()
         axios
             .post('https://tt-8-bw-comake.herokuapp.com/signup', formValues)
             .then(res => {
                 setFormValues(initialFormValues)
-                localStorage.setItem('token', res.data.access_token)
-                localStorage.setItem('token_type', res.data.token_type)
+                // localStorage.setItem('token', res.data.access_token)
+                // localStorage.setItem('token_type', res.data.token_type)
                 push('/profile')
             })
             .catch(err => {

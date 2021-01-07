@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Profile from '../User/profile';
 import { Link, Route } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
+import axios from 'axios'
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -72,7 +73,6 @@ export default function Login() {
         })
     };
 
-    
 
     useEffect(() => {
         schema.isValid(formValues).then((valid) => {
