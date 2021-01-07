@@ -24,7 +24,7 @@ const schema = yup.object().shape({
 });
 
 const initialFormValues = {
-    // imgurl: '',
+    imgurl: '',
     title: '',
     postbody: '',
     streetaddress: '',

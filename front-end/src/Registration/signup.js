@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios'
 import { useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
 
 const schema = yup.object().shape({
     username: yup
@@ -44,10 +43,6 @@ export default function Signup() {
 
     const onSubmit = evt => {
         evt.preventDefault();
-<<<<<<< HEAD
-=======
-        // axiosWithAuth()
->>>>>>> c777db1a2864d1d1c9cced76a27ace362c1024fb
         axios
             .post('https://tt-8-bw-comake.herokuapp.com/signup', formValues)
             .then(res => {
