@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Navbar from '../Components/Navbar';
+import LandingSrc from '../Utils/Pictures/landing-image.png';
 
-const StyledNav = styled.nav `
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-`
-const StyledA = styled.a `
 
-`
+const LandingImage = styled.img`
+    max-width: 876px;
+    margin: 0 auto !important;
+    padding-top: 72px;
+    display: grid;
+`;
 
 const BodyDiv = styled.div `
-
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
     h1 {
+        margin-top: 80px;
         font-weight: bold;
         font-size: 72px;
         text-align: center;
@@ -37,6 +38,7 @@ const BodyDiv = styled.div `
         margin: 0 auto;
         max-width: 840px;
     }
+
 `
 
 function Home () {
@@ -44,22 +46,17 @@ function Home () {
     return (
         <>
             <div>
-                <StyledNav>
-                    <StyledA><Link to='/'>Home</Link></StyledA>
-                    <StyledA><Link to='/login'>Log-In</Link></StyledA>
-                    <StyledA><Link to='/about'>About Us</Link></StyledA>
-                    <StyledA><Link to='/team'>Meet the Team</Link></StyledA>
-                </StyledNav>
+            <Navbar />
+
             </div>
             <BodyDiv>
                 <h1>Change Your <span>Community</span><br /> with Co-Make!</h1>
                 <div>
-                    <p>With Co-make you can make your voice heard on the issues you would like to see resolved in your community. </p>
-                    <img 
-                        src="" 
-                        alt='fits with the company description'
-                    />
+                    <p>With Co-Make you can make your voice heard on the issues you would like to see resolved in your community. </p>
                 </div>
+                
+                    <LandingImage src={LandingSrc} />
+                
             </BodyDiv>
         </>
 
@@ -67,3 +64,5 @@ function Home () {
 }
 
 export default Home;
+
+

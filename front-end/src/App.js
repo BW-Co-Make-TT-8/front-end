@@ -13,12 +13,12 @@ import Post from './User/Posts/post';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img 
           src=''
           alt='Co-Make Logo'
         />
-      </header>
+      </header> */}
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
       <Route exact path='/' component={Home} />
