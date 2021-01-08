@@ -48,8 +48,8 @@ export default function Signup() {
             .post('https://tt-8-bw-comake.herokuapp.com/signup', formValues)
             .then(res => {
                 setFormValues(initialFormValues)
-                localStorage.setItem('token', res.data.access_token)
-                localStorage.setItem('token_type', res.data.token_type)
+                // localStorage.setItem('token', res.data.access_token)
+                // localStorage.setItem('token_type', res.data.token_type)
                 push('/profile')
             })
             .catch(err => {

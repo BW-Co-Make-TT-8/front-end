@@ -40,6 +40,7 @@ export default function Login() {
                 console.log("this is the login", res.data)
                 localStorage.setItem('token', res.data.access_token)
                 localStorage.setItem('token_type', res.data.token_type)
+                localStorage.setItem('userId', res.data.userid)
                 setFormValues(initialFormValues)
                 push('/profile')
             })
