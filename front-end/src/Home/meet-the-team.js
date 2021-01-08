@@ -21,7 +21,7 @@ export default function MeetTheTeam() {
                             David Chang
                         </h2>
                         <p>
-                            Backend Developer
+                            Backend Developer. First Kings 3:16.
                         </p>
                     </div>
 
@@ -30,7 +30,9 @@ export default function MeetTheTeam() {
                             Seth Bradshaw
                         </h2>
                         <p>
-                            Backend Developer
+                            Backend Java developer. Wubba wubba dub dub.
+
+                            https://www.linkedin.com/in/seth-bradshaw-b20b151b5/
                         </p>
                     </div>
 
@@ -39,7 +41,7 @@ export default function MeetTheTeam() {
                             Elijah Elliott
                         </h2>
                         <p>
-                            Frontend Developer
+                            React devloper. Tesla to the moon. 🚀🚀🚀
                         </p>
                     </div>
 
@@ -48,34 +50,25 @@ export default function MeetTheTeam() {
                             Bria Barry
                         </h2>
                         <p>
-                            Frontend Developer
+                            Aspiring frontend developer. My sigil is your epitaph.
                         </p>
                     </div>
 
                     <div className="bioFive">
                         <h2>
-                            Maksim Raymond
+                            William Dye
                         </h2>
                         <p>
-                            Frontend Developer
+                            UI Developer. Amateur cat dad.
                         </p>
                     </div>
 
                     <div className="bioSix">
                         <h2>
-                            William Dye
-                        </h2>
-                        <p>
-                            Marketing Team
-                        </p>
-                    </div>
-
-                    <div className="bioSeven">
-                        <h2>
                             Nate Davis
                         </h2>
                         <p>
-                            Marketing Team
+                            UI Developer. Not your average green boy.
                         </p>
                     </div>
                     
