@@ -31,10 +31,19 @@ export default function PostDetails(props) {
                         <p>{details.city} {details.state}, {details.location}</p>
                     </div>
                     <p>{details.postbody}</p>
+                    <button onClick={close}>Close</button>
+                    <div className="comment-container">
+                        {
+                            details.comments.map(comment => {
+                                {console.log(comment)}
+                                return <p>{comment.commentbody}</p>
+                            })
+                        }
+                    </div>
                 </>
             }
-            <button onClick={close}>Close</button>
-            <button onClick={() => <Comments postId={postId}/>}>Comments</button>
+            
+           
         </div>
     )
 }
