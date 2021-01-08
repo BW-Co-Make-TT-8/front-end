@@ -8,7 +8,6 @@ export default function PostDetails(props) {
     const [details, setDetails] = useState(null);
 
     useEffect(() => {
-
         axiosWithAuth()
             .get(`/posts/${postId}`)
             .then(res => {
@@ -21,10 +20,13 @@ export default function PostDetails(props) {
 
     return (
         <div className='container'>
-            <h2>Details for {details.title}:</h2>
+            {
+                console.log("THIS IS YOUR DETAILS IN POSTDETAILS ===> ", details)
+            } 
             {
                 details &&
                 <>
+                    <h2>Details for {details.title}:</h2>
                     <div>
                         <p>{details.city} {details.state}, {details.location}</p>
                     </div>

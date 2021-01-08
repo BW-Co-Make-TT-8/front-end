@@ -15,7 +15,6 @@ export default function Profile() {
                 .get('/posts')
                 .then(res => {
                     setPosts(res.data)
-                    console.log(res.data);
                 })
                 .catch(err => {
                     console.log(err)
@@ -26,6 +25,7 @@ export default function Profile() {
     }, [])
 
     const openDetails = id => {
+        console.log("THIS IS THE CURRENT ID ===> ", id)
         setCurrentPostId(id)
     }
 
@@ -36,6 +36,7 @@ export default function Profile() {
     const Post = props => (
         <div className='post'>
             {props.info.title}
+            {console.log("HERE IS YOUR PROPS.INFO ===> ", props.info)}
             <button onClick={() => openDetails(props.info.postid)}>
                 See Details
             </button>
@@ -52,7 +53,7 @@ export default function Profile() {
             <h1>Your Local Feed</h1>
             {
                 posts.map(pst => {
-                    return <Post key={pst.title} info={pst} />
+                    return <Post key={pst.postId} info={pst} />
                 })
             }
             {
