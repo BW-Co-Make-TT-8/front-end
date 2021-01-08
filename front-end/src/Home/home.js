@@ -11,6 +11,7 @@ const LandingImage = styled.img`
     margin: 0 auto !important;
     padding-top: 72px;
     display: grid;
+    filter: drop-shadow(0px 2px 14px rgba(0, 0, 0, 0.1));
 `;
 
 const BodyDiv = styled.div `
