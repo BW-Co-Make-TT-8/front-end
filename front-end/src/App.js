@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Home from './Home/home';
-import Signup from './Registration/signup';
-import Login from './Registration/login';
-import About from './Home/about-us';
-import MeetTheTeam from './Home/meet-the-team';
+import Home from './Home/Home';
+import Signup from './Registration/Signup';
+import Login from './Registration/Login';
+import About from './Home/AboutUs';
+import MeetTheTeam from './Home/MeetTheTeam';
 import Dashboard from './User/Dashboard';
 import Profile from './User/Profile'
 import Post from './User/Posts/Post';
