@@ -1,50 +1,63 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import Comments from '../Comments/Comments';
 import axios from 'axios';
 
-export default function PostDetails(props) {
-    const { postId, close } = props;
-    const [details, setDetails] = useState(null);
+export default function PostDetails() {
+    const { postid } = useParams()
+    const [currentPost, setCurrentPost] = useState(null);
 
     useEffect(() => {
+        console.log("USE EFFECT IS WORKING")
         axiosWithAuth()
-            .get(`/posts/${postId}`)
+            .get(`/posts/${postid}`)
             .then(res => {
-                setDetails(res.data)
+                setCurrentPost(res.data);
             })
             .catch(err => {
-                debugger
+                console.log(err);
             })
-    }, [postId])
+    }, [])
 
     return (
-        <div className='container'>
+        <>
+        {
+            <h2>YOU ARE HERE MOTHER FUCKER</h2>
+        }
             {
-                console.log("THIS IS YOUR DETAILS IN POSTDETAILS ===> ", details)
-            } 
-            {
-                details &&
-                <>
-                    <h2>Details for {details.title}:</h2>
+                currentPost.imgurl != null ?
+                <div className='single-post-container-with-img'>
+                    <h2>{currentPost.title}</h2>
+                    {
+                    console.log("YOU ARE HERE AND TERNARY WORKS RIGHT===> ", currentPost)
+                    }
+                    <img src={currentPost.imgurl}></img>
                     <div>
-                        <p>{details.city} {details.state}, {details.location}</p>
+                        <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
                     </div>
-                    <p>{details.postbody}</p>
-                    <button onClick={close}>Close</button>
+                    <p>{currentPost.postbody}</p>
                     <div className="comment-container">
                         {
-                            details.comments != null ? <Comments postId={details.postid} /> : null
-                            // if(details.comments != null)
-                            // {
-                            //     return <Comments  postId={details.postid}/>
-                            // }
+                            currentPost.comments != null ? <Comments postId={currentPost.postid} /> : null
                         }
                     </div>
-                </>
+                </div> 
+                :
+                <div className='single-post-container-without-img'>
+                    <h2>{currentPost.title}</h2>
+                    
+                    <div>
+                        <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
+                    </div>
+                    <p>{currentPost.postbody}</p>
+                    <div className="comment-container">
+                        {
+                            currentPost.comments != null ? <Comments postId={currentPost.postid} /> : null
+                        }
+                    </div>
+                </div>
             }
-            
-           
-        </div>
+        </>
     )
 }

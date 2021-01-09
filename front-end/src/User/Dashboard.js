@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
     const { push } = useHistory();
-    const [posts, setPosts] = useState([])
-    const [currentPostId, setCurrentPostId] = useState(null)
+    const [posts, setPosts] = useState([]);
+    let [currentUpVote, setCurrentUpVote] = useState(0);
+    let upVote = 0;
 
     useEffect(() => {
         const fetchPosts = () => {
@@ -24,41 +25,32 @@ export default function Dashboard() {
         fetchPosts()
     }, [])
 
-    const openDetails = id => {
-        console.log("THIS IS THE CURRENT ID ===> ", id)
-        setCurrentPostId(id)
+    const upVoteClicked = evt => {
+        setCurrentUpVote(currentUpVote++);
     }
-
-    const closeDetails = () => {
-        setCurrentPostId(null)
-    }
-
-    const Post = props => (
-        <div className='post'>
-            {props.info.title}
-            {console.log("HERE IS YOUR PROPS.INFO ===> ", props.info)}
-            <button onClick={() => openDetails(props.info.postid)}>
-                See Details
-            </button>
-        </div>
-    )
 
     return (
         <div className='container'>
             <nav>
                 <Link to='/profile'>My Profile</Link>
-                <Link to='/post'>Create Post</Link>
+                <Link to='/createpost'>Create Post</Link>
                 <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
             </nav>
             <h1>Your Local Feed</h1>
-            {
-                posts.map(pst => {
-                    return <Post key={pst.postId} info={pst} />
-                })
-            }
-            {
-                currentPostId && <PostDetails postId={currentPostId} close={closeDetails} />
-            }
+                {
+                    posts.map(pst => {
+                        return (
+                            <div className='dashboard-posts-card' onClick={() => push(`/post/${pst.postid}`)}>
+                                <div onClick={() => upVoteClicked()}>
+                                    <p>^</p>
+                                    <p>{currentUpVote}</p>
+                                </div>
+                                <h3>{pst.title}</h3>
+                                <p>{pst.postbody}</p>
+                            </div>
+                        )
+                    })
+                }
         </div>
     )
 }

@@ -8,9 +8,8 @@ import MeetTheTeam from './Home/MeetTheTeam';
 import Dashboard from './User/Dashboard';
 import Profile from './User/Profile'
 import Post from './User/Posts/Post';
-import Logout from './Logout'
-
-// Will be rendering the home page here as the default but am setting up the company logo as the header so that it is set on all lower level pages.
+import Logout from './Logout';
+import PostDetails from './User/Posts/PostDetails'
 
 function App() {
   return (
@@ -28,8 +27,9 @@ function App() {
       <Route path='/about' component={About} />
       <Route path='/team' component={MeetTheTeam} />
       <Route path='/dashboard' component={Dashboard} />
-      <Route path='/post' component={Post} />
+      <Route path='/createpost' component={Post} />
       <Route path='/profile' component={Profile} />
+      <Route path='/post/{postid}' component={PostDetails} />
     </div>
   );
 }
