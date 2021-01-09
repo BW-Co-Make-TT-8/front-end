@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import {useHistory} from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import PostDetails from './Posts/PostDetails';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
+    const { push } = useHistory();
     const [posts, setPosts] = useState([])
     const [currentPostId, setCurrentPostId] = useState(null)
 
@@ -44,8 +46,9 @@ export default function Dashboard() {
     return (
         <div className='container'>
             <nav>
-                <a><Link to='/profile'>My Profile</Link></a>
-                <a><Link to='/post'>Create Post</Link></a>
+                <Link to='/profile'>My Profile</Link>
+                <Link to='/post'>Create Post</Link>
+                <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
             </nav>
             <h1>Your Local Feed</h1>
             {
