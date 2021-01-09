@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import PostDetails from './Posts/postDetails';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Profile() {
+    const { push } = useHistory();
     const [posts, setPosts] = useState([])
     const [currentPostId, setCurrentPostId] = useState(null)
 
@@ -49,6 +50,9 @@ export default function Profile() {
                 <a>My Profile</a>
                 <a><Link to='/post'>Create Post</Link></a>
                 <a>My Posts</a>
+                <Link to="/logout">
+                    <button onClick={() => push("/logout")}>Logout</button>
+                </Link>
             </nav>
             <h1>Your Local Feed</h1>
             {
