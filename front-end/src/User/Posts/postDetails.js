@@ -34,10 +34,11 @@ export default function PostDetails(props) {
                     <button onClick={close}>Close</button>
                     <div className="comment-container">
                         {
-                            details.comments.map(comment => {
-                                {console.log(comment)}
-                                return <p>{comment.commentbody}</p>
-                            })
+                            details.comments != null ? <Comments postId={details.postid} /> : null
+                            // if(details.comments != null)
+                            // {
+                            //     return <Comments  postId={details.postid}/>
+                            // }
                         }
                     </div>
                 </>

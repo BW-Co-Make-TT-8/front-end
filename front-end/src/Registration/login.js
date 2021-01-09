@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Profile from '../User/profile';
+import Profile from '../User/Dashboard';
 import { Link, Route } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import axios from 'axios'
@@ -38,16 +38,13 @@ export default function Login() {
         axiosWithAuth()
             .post('/login', formValues)
             .then(res => {
-                // console.log("this is the login", res.data)
                 localStorage.setItem('token', res.data.access_token)
                 localStorage.setItem('token_type', res.data.token_type)
-                // localStorage.setItem('userId', res.data.userid)
                 setFormValues(initialFormValues)
-                push('/profile')
+                push('/dashboard')
             })
             .catch(err => {
                 console.log(err);
-                debugger
             });
     };
 
