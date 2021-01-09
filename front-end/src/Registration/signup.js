@@ -123,7 +123,7 @@ export default function Signup() {
                             value={formValues.location}
                             onChange={onChange}
                             name='location'
-                            // type='number'
+                            type='number'
                             placeholder='Zip Code'
                         />
                     </div>
