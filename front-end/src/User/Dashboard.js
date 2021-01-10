@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
-import PostDetails from './Posts/PostDetails';
+// import SinglePost from './Posts/SinglePost';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {

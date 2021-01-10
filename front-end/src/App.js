@@ -7,9 +7,11 @@ import About from './Home/AboutUs';
 import MeetTheTeam from './Home/MeetTheTeam';
 import Dashboard from './User/Dashboard';
 import Profile from './User/Profile'
-import Post from './User/Posts/Post';
+import CreatePost from './User/Posts/CreatePost';
 import Logout from './Logout';
-import PostDetails from './User/Posts/PostDetails'
+import SinglePost from './User/Posts/SinglePost';
+import EditComment from './User/Comments/EditComment';
+import CreateComment from './User/Comments/CreateComment';
 
 function App() {
   return (
@@ -27,9 +29,11 @@ function App() {
       <Route path='/about' component={About} />
       <Route path='/team' component={MeetTheTeam} />
       <Route path='/dashboard' component={Dashboard} />
-      <Route path='/createpost' component={Post} />
+      <Route path='/createpost' component={CreatePost} />
       <Route path='/profile' component={Profile} />
-      <Route path='/post/{postid}' component={PostDetails} />
+      <Route path='/post/:postid' component={SinglePost} />
+      <Route path='/addcomment' component={CreateComment} />
+      <Route path='/editcomment/:commentid' component={EditComment} />
     </div>
   );
 }

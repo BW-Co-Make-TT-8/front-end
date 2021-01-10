@@ -1,30 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth';
-import Comment from '../Comments/Comment'
+import { Link, useHistory } from 'react-router-dom';
+import EditComment from '../Comments/EditComment'
 
 export default function Comments(props) {
-    const {postId} = props;
-    const {post, setPost} = useState(null);
+    const {comments} = props;
+    const {push} = useHistory();
+    // const [editing, setEditing] = useState(false);
 
-    useEffect(() => {
-        axiosWithAuth()
-            .get(`http://tt-8-bw-comake.herokuapp.com/posts/${postId}`)
-            .then(res => {
-                setPost(res.data);
-            })
-            .catch(err => {
-                console.log(`Issue finding post ${postId}: `, err);
-            })
-    }, [])
+    // useEffect(() => {console.log("here")}, [editing])
+
+    // const editComment = (evt) => {
+
+    // }
 
     return (
         <div className="commentsContainer">
+            {console.log("COMMENTS PASSED TO COMMENTS===>", comments)}
             {
-                post == !null && "comments" in post ?
-                post.comments.map(comment => {
-                    return <Comment comment={comment}/>
-                }) :
-                null
+                comments.map(comment => {
+                    return (
+                        <div className="single-comment-container" key={comment.commentbody}>
+                            {/* this is where the link to the comment user goes */}
+                            <p key={comment.commentid}>{comment.commentbody}</p>
+                            <button onClick={() => push('/addcomment')}>Comment</button>
+                            {/* this is where logic to filter if current user is user who made comment goes */}
+                            <button onClick={() => push(`/editcomment/${comment.commentid}`)}>Edit</button>
+                        </div>
+                    )
+                })
             }
         </div>
     )
