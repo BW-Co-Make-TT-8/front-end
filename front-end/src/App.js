@@ -7,10 +7,11 @@ import About from './Home/AboutUs';
 import MeetTheTeam from './Home/MeetTheTeam';
 import Dashboard from './User/Dashboard';
 import Profile from './User/Profile'
-import Post from './User/Posts/Post';
-import Logout from './Logout'
-
-// Will be rendering the home page here as the default but am setting up the company logo as the header so that it is set on all lower level pages.
+import CreatePost from './User/Posts/CreatePost';
+import Logout from './Logout';
+import SinglePost from './User/Posts/SinglePost';
+import EditComment from './User/Comments/EditComment';
+import CreateComment from './User/Comments/CreateComment';
 
 function App() {
   return (
@@ -28,8 +29,11 @@ function App() {
       <Route path='/about' component={About} />
       <Route path='/team' component={MeetTheTeam} />
       <Route path='/dashboard' component={Dashboard} />
-      <Route path='/post' component={Post} />
+      <Route path='/createpost' component={CreatePost} />
       <Route path='/profile' component={Profile} />
+      <Route path='/post/:postid' component={SinglePost} />
+      <Route path='/addcomment' component={CreateComment} />
+      <Route path='/editcomment/:commentid' component={EditComment} />
     </div>
   );
 }

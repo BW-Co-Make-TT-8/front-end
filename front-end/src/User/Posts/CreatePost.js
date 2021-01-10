@@ -35,7 +35,7 @@ const initialFormValues = {
     comments: []
 }
 
-export default function Post() {
+export default function CreatePost() {
     const { push } = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
     const [user, setUser] = useState(null);
