@@ -6,6 +6,7 @@ import EditComment from '../Comments/EditComment'
 export default function Comments(props) {
     const {comments} = props;
     const {push} = useHistory();
+    const [boolean, setBoolean] = useState(false);
     // const [editing, setEditing] = useState(false);
 
     // useEffect(() => {console.log("here")}, [editing])
@@ -23,9 +24,19 @@ export default function Comments(props) {
                         <div className="single-comment-container" key={comment.commentbody}>
                             {/* this is where the link to the comment user goes */}
                             <p key={comment.commentid}>{comment.commentbody}</p>
-                            <button onClick={() => push('/addcomment')}>Comment</button>
                             {/* this is where logic to filter if current user is user who made comment goes */}
-                            <button onClick={() => push(`/editcomment/${comment.commentid}`)}>Edit</button>
+                            <button onClick={() => setBoolean(true) }>Edit</button>
+                            <>
+                                {
+                                boolean ?
+                                <div className="edit-comment-form">
+                                    <p>HERE BITCH</p>
+                                </div>
+                                :
+                                <>
+                                </>
+                                }
+                            </>
                         </div>
                     )
                 })

@@ -6,20 +6,22 @@ const initialForm = {
     commentbody: ""
 }
 
-export default function EditComment() {
+export default function EditComment(props) {
+    const {comment} = props;
     const {commentid} = useParams();
     const {push} = useHistory();
     const [currentComment, setCurrentComment] = useState(initialForm);
-
+    console.log("in editcommentS")
     useEffect(() => {
         axiosWithAuth()
-            .get(`https://tt-8-bw-comake.herokuapp.com/comments/${commentid}`)
+            .get(`https://tt-8-bw-comake.herokuapp.com/comments/${comment.commentid}`)
             .then(res => {
                 setCurrentComment(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
+            console.log("useeffect is running!")
     }, [])
 
     const changeHandler = (evt) => {
@@ -37,7 +39,7 @@ export default function EditComment() {
             .catch(err => {
                 console.log(err);
             })
-        // push('/profile')    
+        // push(hist)    
     }
 
     const deleteComment = () => {
