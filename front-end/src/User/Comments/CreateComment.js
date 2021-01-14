@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth';
 
-export default function CreateComment() {
-    const {postid} = useParams();
-    const {push} = useHistory();
+export default function CreateComment(props) {
+    const {postid} = props
     const [userid, setUserid] = useState(null);
     const [currentComment, setCurrentComment] = useState({
         commentbody: "",
@@ -27,8 +26,6 @@ export default function CreateComment() {
             })
     }, [])
 
-    
-
     const changeHandler = (evt) => {
         const {name, value} = evt.target;
         setCurrentComment({...currentComment,
@@ -45,7 +42,7 @@ export default function CreateComment() {
             .catch(err => {
                 console.log(err);
             })
-        push(`/post/${postid}`)    
+        // push(`/post/${postid}`)
     }
 
     return (
