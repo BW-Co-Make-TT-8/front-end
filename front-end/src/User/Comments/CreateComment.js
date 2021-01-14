@@ -2,14 +2,32 @@ import React, {useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth';
 
-const initialForm = {
-    commentbody: ""
-}
-
 export default function CreateComment() {
-    const {commentid} = useParams();
+    const {postid} = useParams();
     const {push} = useHistory();
-    const [currentComment, setCurrentComment] = useState(initialForm);
+    const [userid, setUserid] = useState(null);
+    const [currentComment, setCurrentComment] = useState({
+        commentbody: "",
+        user: {
+            userid: userid
+        },
+        post: {
+            postid: postid
+        }
+    });
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get('https://tt-8-bw-comake.herokuapp.com/userinfo')
+            .then(res => {
+                setUserid(res.data.userid)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
+    
 
     const changeHandler = (evt) => {
         const {name, value} = evt.target;
@@ -18,6 +36,7 @@ export default function CreateComment() {
     }
 
     const saveNewComment = (newComment) => {
+        newComment.user.userid = userid;
         axiosWithAuth()
             .post(`https://tt-8-bw-comake.herokuapp.com/comments`, newComment)
             .then(res => {
@@ -26,7 +45,7 @@ export default function CreateComment() {
             .catch(err => {
                 console.log(err);
             })
-        // push('/profile')    
+        push(`/post/${postid}`)    
     }
 
     return (

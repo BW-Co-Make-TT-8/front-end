@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import Comments from '../Comments/Comments';
 
 export default function SinglePost() {
-    const { postid } = useParams()
+    const {push} = useHistory();
+    const { postid } = useParams();
     const [currentPost, setCurrentPost] = useState({});
+    const [bool, setBool] = useState(false)
 
     useEffect(() => {
         axiosWithAuth()
@@ -18,6 +20,7 @@ export default function SinglePost() {
             })
     }, [])
 
+
     return (
         <>
             {
@@ -29,9 +32,10 @@ export default function SinglePost() {
                         <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
                     </div>
                     <p>{currentPost.postbody}</p>
+                    <button onClick={() => push(`/post/${currentPost.postid}/addcomment`)}>Comment</button>
                     <div className="comment-container">
                         {
-                            currentPost.comments != null ? <Comments comments={currentPost.comments} /> : null
+                            currentPost.comments != null ? <Comments comments={currentPost.comments} setBool={setBool}/> : null
                         }
                     </div>
                 </div> 
@@ -42,9 +46,10 @@ export default function SinglePost() {
                         <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
                     </div>
                     <p>{currentPost.postbody}</p>
+                    <button onClick={() => push('/addcomment')}>Comment</button>
                     <div className="comment-container">
                         {
-                            currentPost.comments != null ? <Comments comments={currentPost.comments} /> : null
+                            currentPost.comments != null ? <Comments comments={currentPost.comments} postid={postid} /> : null
                         }
                     </div>
                 </div>

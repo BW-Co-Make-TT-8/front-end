@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth';
 import { Link, useHistory } from 'react-router-dom';
 import EditComment from '../Comments/EditComment'
+import SingleComment from '../Comments/SingleComment'
 
 export default function Comments(props) {
-    const {comments} = props;
+    const {comments, postid, setBool} = props;
     const {push} = useHistory();
+    const [boolean, setBoolean] = useState(false);
     // const [editing, setEditing] = useState(false);
 
     // useEffect(() => {console.log("here")}, [editing])
@@ -13,6 +15,16 @@ export default function Comments(props) {
     // const editComment = (evt) => {
 
     // }
+    useEffect(()=>{
+        axiosWithAuth()
+            .get(`/posts/${postid}/`)
+            .then(res => {
+                // setCurrentPost(res.data);
+            })
+            .catch(err => {
+                // console.log(err);
+            })
+    }, [])
 
     return (
         <div className="commentsContainer">
@@ -20,13 +32,24 @@ export default function Comments(props) {
             {
                 comments.map(comment => {
                     return (
-                        <div className="single-comment-container" key={comment.commentbody}>
-                            {/* this is where the link to the comment user goes */}
-                            <p key={comment.commentid}>{comment.commentbody}</p>
-                            <button onClick={() => push('/addcomment')}>Comment</button>
-                            {/* this is where logic to filter if current user is user who made comment goes */}
-                            <button onClick={() => push(`/editcomment/${comment.commentid}`)}>Edit</button>
-                        </div>
+                        <SingleComment comment={comment} setBool={setBool}/>
+                        // <div className="single-comment-container" key={comment.commentbody}>
+                        //     {/* this is where the link to the comment user goes */}
+                        //     <p key={comment.commentid}>{comment.commentbody}</p>
+                        //     {/* this is where logic to filter if current user is user who made comment goes */}
+                        //     <button onClick={() => toggle() }>Edit</button>
+                        //     <>
+                        //         {
+                        //         boolean ?
+                        //         <div className="edit-comment-form">
+                        //             <p>HERE BITCH</p>
+                        //         </div>
+                        //         :
+                        //         <>
+                        //         </>
+                        //         }
+                        //     </>
+                        // </div>
                     )
                 })
             }

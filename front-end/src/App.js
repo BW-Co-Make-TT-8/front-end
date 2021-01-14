@@ -31,9 +31,8 @@ function App() {
       <Route path='/dashboard' component={Dashboard} />
       <Route path='/createpost' component={CreatePost} />
       <Route path='/profile' component={Profile} />
-      <Route path='/post/:postid' component={SinglePost} />
-      <Route path='/addcomment' component={CreateComment} />
-      <Route path='/editcomment/:commentid' component={EditComment} />
+      <Route exact path='/post/:postid' component={SinglePost} />
+      <Route path='/post/:postid/addcomment' component={CreateComment} />
     </div>
   );
 }
