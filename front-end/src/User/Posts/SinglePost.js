@@ -7,6 +7,7 @@ export default function SinglePost() {
     const {push} = useHistory();
     const { postid } = useParams();
     const [currentPost, setCurrentPost] = useState({});
+    const [bool, setBool] = useState(false)
 
     useEffect(() => {
         axiosWithAuth()
@@ -19,7 +20,6 @@ export default function SinglePost() {
             })
     }, [])
 
-    useEffect(()=> {}, [currentPost.comments])
 
     return (
         <>
@@ -35,7 +35,7 @@ export default function SinglePost() {
                     <button onClick={() => push(`/post/${currentPost.postid}/addcomment`)}>Comment</button>
                     <div className="comment-container">
                         {
-                            currentPost.comments != null ? <Comments comments={currentPost.comments} /> : null
+                            currentPost.comments != null ? <Comments comments={currentPost.comments} setBool={setBool}/> : null
                         }
                     </div>
                 </div> 
@@ -49,7 +49,7 @@ export default function SinglePost() {
                     <button onClick={() => push('/addcomment')}>Comment</button>
                     <div className="comment-container">
                         {
-                            currentPost.comments != null ? <Comments comments={currentPost.comments} /> : null
+                            currentPost.comments != null ? <Comments comments={currentPost.comments} postid={postid} /> : null
                         }
                     </div>
                 </div>

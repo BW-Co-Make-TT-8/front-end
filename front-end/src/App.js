@@ -33,7 +33,6 @@ function App() {
       <Route path='/profile' component={Profile} />
       <Route exact path='/post/:postid' component={SinglePost} />
       <Route path='/post/:postid/addcomment' component={CreateComment} />
-      <Route path='/editcomment/:commentid' component={EditComment} />
     </div>
   );
 }
