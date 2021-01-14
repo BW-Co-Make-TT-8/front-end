@@ -33,10 +33,10 @@ export default function EditComment(props) {
         axiosWithAuth()
             .put(`https://tt-8-bw-comake.herokuapp.com/comments/${comment.commentid}`, newComment)
             .then(res => {
-                
+                console.log(res);
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
         toggle()
     }

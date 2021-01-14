@@ -11,23 +11,38 @@ export default function Dashboard() {
     let upVote = 0;
 
     useEffect(() => {
-        const fetchPosts = () => {
-            axiosWithAuth()
-                .get('/posts')
-                .then(res => {
-                    setPosts(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                    debugger
-                })
-        }
         fetchPosts()
+        fetchUser()
     }, [])
+
+    const fetchUser = () => {
+        axiosWithAuth()
+            .get('/userinfo')
+            .then(res => {
+                localStorage.setItem('userid', res.data.userid);
+            })
+            .catch(err => {
+                debugger
+            })
+    }
+
+    const fetchPosts = () => {
+        axiosWithAuth()
+            .get('/posts')
+            .then(res => {
+                setPosts(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+                debugger
+            })
+    }
 
     const upVoteClicked = evt => {
         setCurrentUpVote(currentUpVote++);
     }
+    
+
 
     return (
         <div className='container'>

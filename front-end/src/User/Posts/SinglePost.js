@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import Comments from '../Comments/Comments';
+import CreateComment from '../Comments/CreateComment'
 
 export default function SinglePost() {
     const {push} = useHistory();
     const { postid } = useParams();
     const [currentPost, setCurrentPost] = useState({});
-    const [bool, setBool] = useState(false)
+    const [commentForm, setCommentForm] = useState(false)
 
     useEffect(() => {
         axiosWithAuth()
@@ -20,6 +21,9 @@ export default function SinglePost() {
             })
     }, [])
 
+    const toggle = () => {
+        setCommentForm(true);
+    }
 
     return (
         <>
@@ -32,10 +36,15 @@ export default function SinglePost() {
                         <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
                     </div>
                     <p>{currentPost.postbody}</p>
-                    <button onClick={() => push(`/post/${currentPost.postid}/addcomment`)}>Comment</button>
+                    {
+                        !commentForm ?
+                        <button onClick={() => toggle()}>Comment</button>
+                        :
+                        <CreateComment postid={currentPost.postid}/>
+                    }
                     <div className="comment-container">
                         {
-                            currentPost.comments != null ? <Comments comments={currentPost.comments} setBool={setBool}/> : null
+                            currentPost.comments != null ? <Comments comments={currentPost.comments} /> : null
                         }
                     </div>
                 </div> 

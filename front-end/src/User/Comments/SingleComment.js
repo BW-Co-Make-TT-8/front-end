@@ -1,20 +1,44 @@
 import React, {useState, useEffect} from 'react';
+import {axiosWithAuth} from '../../Utils/axiosWithAuth'
+
 import EditComment from '../Comments/EditComment';
 
 export default function SingleComment(props) {
-    const {comment, setBool} = props
+    const {comment} = props
+    const userid = localStorage.getItem('userid');
+    const [commentUser, setCommentUser] = useState(null)
     const [editing, setEditing] = useState(false);
     const toggle = () => {
         setEditing(!editing)
-        setBool(true)
     }
 
+    useEffect(() => {
+        axiosWithAuth()
+            .get(`/comments/${comment.commentid}`)
+            .then(res => {
+                setCommentUser(res.data.user);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }, [])
+
+    console.log("Here is commentUserid ===>", commentUser )
+
     return (
+        <>
+        {
+            commentUser != null ?
         <div className="single-comment-container" key={comment.commentbody}>
-            {/* this is where the link to the comment user goes */}
+            <a className="username-comment-link" href={`https://tt-8-bw-comake.herokuapp.com/users/id/${commentUser.userid}`}>{commentUser.username}</a>
             <p key={comment.commentid}>{comment.commentbody}</p>
-            {/* this is where logic to filter if current user is user who made comment goes */}
-            <button onClick={() => toggle() }>Edit</button>
+            {
+                userid == commentUser.userid ?
+                <button onClick={() => toggle() }>Edit</button>
+                :
+                null
+            }
             <>
             {
                 editing ?
@@ -27,5 +51,9 @@ export default function SingleComment(props) {
             }
             </>
         </div>
+        :
+        <p>Loading...</p>
+        }
+        </>
     )
 }
