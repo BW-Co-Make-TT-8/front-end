@@ -1,6 +1,6 @@
 // create a post, decide whether this is a local or state post. Post can be text only but can also link to images like reddit, has to include edit button to make changes.
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth'
@@ -99,6 +99,11 @@ export default function CreatePost() {
 
     return (
         <div>
+        <nav>
+            <Link to='/dashboard'>Home</Link>
+            <Link to='/profile'>My Profile</Link>
+            <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
+        </nav>    
         <form className='form-post-creation' onSubmit={onSubmit}>
             <div className='post-title'>
                 <h1>Create Post</h1>
