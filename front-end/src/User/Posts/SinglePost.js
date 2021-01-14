@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import Comments from '../Comments/Comments';
 
@@ -26,6 +26,12 @@ export default function SinglePost() {
             {
                 currentPost.imgurl != null ?
                 <div className='single-post-container-with-img'>
+                    <nav>
+                        <Link to='/dashboard'>Home</Link>
+                        <Link to='/profile'>My Profile</Link>
+                        <Link to='/createpost'>Create a Post</Link>
+                        <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
+                    </nav>
                     <h2>{currentPost.title}</h2>
                     <img src={currentPost.imgurl}></img>
                     <div>
@@ -41,6 +47,12 @@ export default function SinglePost() {
                 </div> 
                 :
                 <div className='single-post-container-without-img'>
+                    <nav>
+                        <Link to='/dashboard'>Home</Link>
+                        <Link to='/profile'>My Profile</Link>
+                        <Link to='/createpost'>Create Post</Link>
+                        <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
+                    </nav>
                     <h2>{currentPost.title}</h2>
                     <div>
                         <p>{currentPost.city} {currentPost.state}, {currentPost.location}</p>
