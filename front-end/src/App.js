@@ -10,8 +10,8 @@ import Profile from './User/Profile'
 import CreatePost from './User/Posts/CreatePost';
 import Logout from './Logout';
 import SinglePost from './User/Posts/SinglePost';
-import EditComment from './User/Comments/EditComment';
 import CreateComment from './User/Comments/CreateComment';
+import OtherUserProfile from './User/OtherUserProfile';
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
       <Route path='/profile' component={Profile} />
       <Route exact path='/post/:postid' component={SinglePost} />
       <Route path='/post/:postid/addcomment' component={CreateComment} />
+      <Route path='/users/:userid/' component={OtherUserProfile}/>
     </div>
   );
 }
