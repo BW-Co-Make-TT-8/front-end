@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {axiosWithAuth} from '../../Utils/axiosWithAuth'
+import { Link } from 'react-router-dom';
 
 import EditComment from '../Comments/EditComment';
 
@@ -31,7 +32,7 @@ export default function SingleComment(props) {
         {
             commentUser != null ?
         <div className="single-comment-container" key={comment.commentbody}>
-            <a className="username-comment-link" href={`https://tt-8-bw-comake.herokuapp.com/users/id/${commentUser.userid}`}>{commentUser.username}</a>
+            <Link to={`/users/${commentUser.userid}`}>{commentUser.username}</Link>
             <p key={comment.commentid}>{comment.commentbody}</p>
             {
                 userid == commentUser.userid ?

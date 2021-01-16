@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
+import Navbar from './Navbar';
 
 const OtherUserProfile = () => {
     const { userid } = useParams();
@@ -29,12 +30,7 @@ const OtherUserProfile = () => {
             userInfo != null ?
         <div className='User-Profile'>
             <div className='navbar'>
-            <nav>
-                <Link to='/dashboard'>Home</Link>
-                <Link to='/profile'>My Profile</Link>
-                <Link to='/createpost'>Create a Post</Link>
-                <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
-            </nav>
+            <Navbar/>
             </div>
             <div className='User-Info'>
                 <h3>User: {userInfo.username}</h3>

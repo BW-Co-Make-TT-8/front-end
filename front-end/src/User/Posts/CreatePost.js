@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
-import {axiosWithAuth} from '../../Utils/axiosWithAuth'
+import { axiosWithAuth } from '../../Utils/axiosWithAuth';
+import Navbar from '../Navbar';
 
 
 const schema = yup.object().shape({
@@ -99,11 +100,7 @@ export default function CreatePost() {
 
     return (
         <div>
-        <nav>
-            <Link to='/dashboard'>Home</Link>
-            <Link to='/profile'>My Profile</Link>
-            <Link to="/logout" onClick={() => push("/logout")}>Log Out</Link>
-        </nav>    
+        <Navbar/>  
         <form className='form-post-creation' onSubmit={onSubmit}>
             <div className='post-title'>
                 <h1>Create Post</h1>
