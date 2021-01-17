@@ -6,9 +6,11 @@ export default function MeetTheTeam() {
     return(
         <>
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/login'>Log-In</Link>
-                <Link to='/about'>About Us</Link>
+                <Link to='/'> Home </Link>
+                <Link to='/login'> Log In </Link>
+                <Link to='/signup'> Sign Up</Link>
+                <Link to='/about'> About Us </Link>
+                <Link to='/team'> Meet the Team </Link>
             </nav>
             <body>
                 <section className="meetTeamIntro">
@@ -21,7 +23,7 @@ export default function MeetTheTeam() {
                             David Chang
                         </h2>
                         <p>
-                            Backend Developer
+                            Java Backend Developer & React JS Frontend Developer
                         </p>
                     </div>
 
@@ -30,55 +32,27 @@ export default function MeetTheTeam() {
                             Seth Bradshaw
                         </h2>
                         <p>
-                            Backend Developer
+                            Backend Developer & React JS Frontend Developer
                         </p>
                     </div>
 
                     <div className="bioThree">
                         <h2>
-                            Elijah Elliott
+                            Nate Davis
                         </h2>
                         <p>
-                            Frontend Developer
+                            UI & UX Developer
                         </p>
                     </div>
 
                     <div className="bioFour">
                         <h2>
-                            Bria Barry
+                            Elijah Elliott
                         </h2>
                         <p>
-                            Frontend Developer
+                            React JS Frontend Developer
                         </p>
                     </div>
-
-                    <div className="bioFive">
-                        <h2>
-                            Maksim Raymond
-                        </h2>
-                        <p>
-                            Frontend Developer
-                        </p>
-                    </div>
-
-                    <div className="bioSix">
-                        <h2>
-                            William Dye
-                        </h2>
-                        <p>
-                            Marketing Team
-                        </p>
-                    </div>
-
-                    <div className="bioSeven">
-                        <h2>
-                            Nate Davis
-                        </h2>
-                        <p>
-                            Marketing Team
-                        </p>
-                    </div>
-                    
                 </section>
             </body>
         </>

@@ -81,9 +81,11 @@ export default function Login() {
     return (
         <div>
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/about'>About Us</Link>
-                <Link to='/team'>Meet the Team</Link>
+                <Link to='/'> Home </Link>
+                <Link to='/login'> Log In </Link>
+                <Link to='/signup'> Sign Up</Link>
+                <Link to='/about'> About Us </Link>
+                <Link to='/team'> Meet the Team </Link>
             </nav>
             <form className='form-container-login' onSubmit={onSubmit}>
                 <div>

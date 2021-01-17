@@ -87,9 +87,11 @@ export default function Signup() {
     return (
         <div>
             <nav>
-                <a><Link to='/'>Home</Link></a>
-                <a><Link to='/about'>About Us</Link></a>
-                <a><Link to='/team'>Meet the Team</Link></a>
+                <Link to='/'> Home </Link>
+                <Link to='/login'> Log In </Link>
+                <Link to='/signup'> Sign Up </Link>
+                <Link to='/about'> About Us </Link>
+                <Link to='/team'> Meet the Team </Link>
             </nav>
             <form className='form-container' onSubmit={onSubmit}>
                 <div>
