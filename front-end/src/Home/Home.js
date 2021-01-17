@@ -21,10 +21,11 @@ function Home () {
         <>
             <div>
                 <StyledNav>
-                    <StyledA><Link to='/'>Home</Link></StyledA>
-                    <StyledA><Link to='/login'>Log-In</Link></StyledA>
-                    <StyledA><Link to='/about'>About Us</Link></StyledA>
-                    <StyledA><Link to='/team'>Meet the Team</Link></StyledA>
+                <StyledA><Link to='/'> Home </Link></StyledA>
+                <StyledA><Link to='/login'> Log In </Link></StyledA>
+                <StyledA><Link to='/signup'> Sign Up</Link></StyledA>
+                <StyledA><Link to='/about'> About Us </Link></StyledA>
+                <StyledA><Link to='/team'> Meet the Team </Link></StyledA>
                 </StyledNav>
             </div>
             <BodyDiv>
