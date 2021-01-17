@@ -1,4 +1,3 @@
-// be able to edit or delete a post
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';

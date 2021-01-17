@@ -17,7 +17,7 @@ export default function CreateComment(props) {
 
     useEffect(() => {
         axiosWithAuth()
-            .get('https://tt-8-bw-comake.herokuapp.com/userinfo')
+            .get('/userinfo')
             .then(res => {
                 setUserid(res.data.userid)
             })
@@ -35,7 +35,7 @@ export default function CreateComment(props) {
     const saveNewComment = (newComment) => {
         newComment.user.userid = userid;
         axiosWithAuth()
-            .post(`https://tt-8-bw-comake.herokuapp.com/comments`, newComment)
+            .post(`/comments`, newComment)
             .then(res => {
                 console.log(res);
             })

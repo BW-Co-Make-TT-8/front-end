@@ -74,24 +74,6 @@ export default function CreatePost() {
         setFormValues({...formValues, [evt.target.name]: evt.target.value})
     };
 
-    const inputChange = (name, value) => {
-        yup
-        .reach(schema, name)
-        .validate(value)
-        .then(() => {
-            setInitialFormErrors({
-                ...initialFormErrors,
-                [name]: '',
-            })
-        })
-        .catch((err) => {
-            setInitialFormErrors({
-                ...initialFormErrors,
-                [name]: err.errors[0],
-            })
-        })
-    };
-
     useEffect(() => {
         schema.isValid(formValues).then((valid) => {
             setInitialDisabled(!valid);

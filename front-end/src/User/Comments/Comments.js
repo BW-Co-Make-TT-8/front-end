@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {axiosWithAuth} from '../../Utils/axiosWithAuth';
-import { Link, useHistory } from 'react-router-dom';
-import EditComment from '../Comments/EditComment'
+import React from 'react';
 import SingleComment from '../Comments/SingleComment'
 
 export default function Comments(props) {
-    const {comments, postid} = props;
-    const {push} = useHistory();
-    const [boolean, setBoolean] = useState(false);
+    const {comments} = props;
 
     return (
         <div className="commentsContainer">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
+import Navbar from './Navbar';
 
 const Profile = () => {
     const { push } = useHistory();
@@ -27,9 +28,12 @@ const Profile = () => {
         {
             userInfo != null ?
         <div className='User-Profile'>
+            <div className='navbar'>
+            <Navbar/>
+            </div>
             <div className='User-Info'>
-                <h3>Username: {userInfo.username}</h3>
-                <p>Total Upvotes: HERE</p>
+                <h3>User: {userInfo.username}</h3>
+                <h3>Total Upvotes: HERE</h3>
             </div>
             {
             userInfo.userPosts.length > 0 
@@ -37,8 +41,9 @@ const Profile = () => {
             <div className='User-Posts'>
                 <h3>{userInfo.username}'s Posts</h3>
                 {userInfo.userPosts.map(post => (
-                    <h4>{post.post.title}
-                    {console.log(post)}</h4>
+                    <Link key={post.post.postid} to={`/post/${post.post.postid}`}>
+                    <h4>{post.post.title}</h4>
+                    </Link>
                 ))}
             </div>
             :
@@ -50,7 +55,7 @@ const Profile = () => {
             <div className='User-Comments'>
                 <h3>{userInfo.username}'s Comments</h3>
                 {userInfo.comments.map(comment => (
-                    <h5>{comment.commentbody}</h5>
+                    <p>{comment.commentbody}</p>
                 ))}
             </div>
             :

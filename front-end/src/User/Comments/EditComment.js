@@ -8,19 +8,17 @@ const initialForm = {
 
 export default function EditComment(props) {
     const {comment, toggle} = props;
-    const hist = useHistory();
     const [currentComment, setCurrentComment] = useState(initialForm);
-    console.log("in editcommentS")
+
     useEffect(() => {
         axiosWithAuth()
-            .get(`https://tt-8-bw-comake.herokuapp.com/comments/${comment.commentid}`)
+            .get(`/comments/${comment.commentid}`)
             .then(res => {
                 setCurrentComment(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
-            console.log("useeffect is running!")
     }, [])
 
     const changeHandler = (evt) => {
@@ -31,7 +29,7 @@ export default function EditComment(props) {
 
     const saveEditedComment = (newComment) => {
         axiosWithAuth()
-            .put(`https://tt-8-bw-comake.herokuapp.com/comments/${comment.commentid}`, newComment)
+            .put(`/comments/${comment.commentid}`, newComment)
             .then(res => {
                 console.log(res);
             })
@@ -43,7 +41,7 @@ export default function EditComment(props) {
 
     const deleteComment = () => {
         axiosWithAuth()
-            .delete(`https://tt-8-bw-comake.herokuapp.com/comments/${comment.commentid}`)
+            .delete(`/comments/${comment.commentid}`)
             .then(res => {
                 console.log(res);
             })

@@ -49,7 +49,7 @@ export default function Dashboard() {
 
     return (
         <>
-            {username != null ?
+            {localStorage.getItem('username') != null ?
             <div className='container'>
                 <Navbar/>
                 <h1>Your Local Feed</h1>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                         })
                     }
             </div>
-            : 
+            :
             <h2>Is Loading...</h2>
             }
         </>

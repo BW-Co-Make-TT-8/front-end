@@ -25,14 +25,17 @@ export default function SingleComment(props) {
 
     }, [])
 
-    console.log("Here is commentUserid ===>", commentUser )
-
     return (
         <>
         {
             commentUser != null ?
         <div className="single-comment-container" key={comment.commentbody}>
-            <Link to={`/users/${commentUser.userid}`}>{commentUser.username}</Link>
+            {
+                userid != commentUser.userid ?
+                <Link to={`/users/${commentUser.userid}`}>{commentUser.username}</Link>
+                :
+                <Link to={'/profile'}>{commentUser.username}</Link>
+            }
             <p key={comment.commentid}>{comment.commentbody}</p>
             {
                 userid == commentUser.userid ?
